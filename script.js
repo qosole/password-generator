@@ -18,24 +18,14 @@ function generatePassword() {
   } else {
     passwordLength = defaultLength;
   }
-  console.log(typeof passwordLength);
   // Input validation
-  if (typeof passwordLength === "number") {
-    var remainder = (passwordLength % 1);
-    if (remainder === 0) {
-        // Is valid input (integer), but still need to check if within 8 and 128
-        if (passwordLength < 8 || passwordLength > 128) {
-          passwordLength = defaultLength;
-        }
-    } else {
-      // Is invalid input (float)
-      passwordLength = defaultLength;
-    }
-  } else {
-    // Is invalid input (not a number)
+  if (passwordLength == null) {
+    passwordLength = defaultLength;
+  } else if (!/^\d+$/.test(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    // If user input was not a positive integer or was not within the boundaries, alert invalid input and use default length
+    alert("Invalid input! Password length will be set to default (12).");
     passwordLength = defaultLength;
   }
-  console.log(passwordLength);
 
   var setCharacters = confirm("Would you like to set character types? (default all lowercase, no numbers, no special characters)");
   if (setCharacters) {
