@@ -12,6 +12,7 @@ function generatePassword() {
   var passwordLength;
   var defaultLength = 12;
 
+  // Getting user input for length
   var setLength = confirm("Would you like to set a length? (default 12 characters)");
   if (setLength) {
     passwordLength = prompt("Enter a length (integer between 8 and 128 inclusive)");
@@ -27,6 +28,7 @@ function generatePassword() {
     passwordLength = defaultLength;
   }
 
+  // Getting user input for password criteria
   var setCharacters = confirm("Would you like to set character types? (default all lowercase, no numbers, no special characters)");
   if (setCharacters) {
     if (confirm("Include lowercase characters?")) {
