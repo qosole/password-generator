@@ -18,6 +18,7 @@ function generatePassword() {
   } else {
     passwordLength = defaultLength;
   }
+  console.log(typeof passwordLength);
   // Input validation
   if (typeof passwordLength === "number") {
     var remainder = (passwordLength % 1);
@@ -34,6 +35,7 @@ function generatePassword() {
     // Is invalid input (not a number)
     passwordLength = defaultLength;
   }
+  console.log(passwordLength);
 
   var setCharacters = confirm("Would you like to set character types? (default all lowercase, no numbers, no special characters)");
   if (setCharacters) {
@@ -58,7 +60,12 @@ function generatePassword() {
     charset += lowercaseChars;
   }
 
-  
+  // Generating password
+  for (var i = 0, n = charset.length; i < passwordLength; ++i) {
+    password += charset.charAt(Math.floor(Math.random() * n));
+  }
+  console.log(password);
+  return password;
 }
 
 // Write password to the #password input
